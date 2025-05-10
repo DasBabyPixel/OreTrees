@@ -190,7 +190,7 @@ public class OreTreesResourcePack implements RepositorySource {
 
         for (var treeType : Config.treeTypes) {
             var id = treeType.id();
-            var name = Character.toUpperCase(id.charAt(0)) + id.substring(1);
+            var name = treeType.name();
             json.addProperty("block.oretrees." + id + "_sapling", name + " Sapling");
             json.addProperty("block.oretrees." + id + "_leaves", name + " Leaves");
             json.addProperty("block.oretrees." + id + "_log", name + " Log");
