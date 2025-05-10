@@ -32,6 +32,7 @@ public class Config
                 [[trees]]
                 id = "sparkling"
                 color = [r,g,b]
+                name = "Sparkling" (optional, generated from id if not present)
                 """);
 
         var example = CommentedConfig.inMemory();
@@ -82,6 +83,24 @@ public class Config
         }
     }
 
+    private static String generateName(String id) {
+        var sb = new StringBuilder();
+        var nextUppercase = true;
+        for (var c : id.toCharArray()) {
+            if (nextUppercase) {
+                sb.append(Character.toUpperCase(c));
+                nextUppercase = false;
+            } else {
+                if (c == '_') {
+                    c = ' ';
+                    nextUppercase = true;
+                }
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
     public static void syncConfig() {
         var path = Path.of("config/oretrees-common.toml");
         try {
@@ -96,6 +115,10 @@ public class Config
             if (trees != null) {
                 treeTypes = trees.stream().map(config -> {
                     var id = config.get("id").toString();
+                    var name = config.contains("name") ? config.get("name").toString() : null;
+                    if (name == null) {
+                        name = generateName(id);
+                    }
                     var colorObj = config.get("color");
                     var color = Color.WHITE;
                     if (colorObj instanceof List<?> l) {
@@ -104,7 +127,7 @@ public class Config
                         var b = Integer.parseInt(l.get(2).toString());
                         color = new Color(r, g, b);
                     }
-                    return new TreeType(id, color);
+                    return new TreeType(id, name, color);
                 }).collect(Collectors.toSet());
             } else {
                 treeTypes = Set.of();
