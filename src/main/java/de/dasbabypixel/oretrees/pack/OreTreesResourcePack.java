@@ -381,132 +381,132 @@ public class OreTreesResourcePack implements RepositorySource {
         var id = treeType.id();
         assets.put(ResourceLocation.parse("bonsaitrees3:models/tree/" + modid + "/" + id + ".json"), """
                 {
-                  "type": "forge:conditional",
-                  "recipes": [
-                    {
-                      "conditions": [
-                        {
-                          "type": "forge:mod_loaded",
-                          "modid": "bonsaitrees3"
-                        }
-                      ],
-                      "recipe": {
-                        "type": "bonsaitrees3:sapling/%1$s/%2$s",
-                        "version": 3,
-                        "ref": {
-                          "a": {
-                            "block": "%1$s:%2$s_log"
-                          },
-                          "b": {
-                            "block": "%1$s:%2$s_leaves"
-                          }
-                        },
-                        "shape": [
-                          [
-                            "     ",
-                            "     ",
-                            "bbbb ",
-                            " bbb ",
-                            "     ",
-                            "     "
-                          ],
-                          [
-                            "  b  ",
-                            "  bb ",
-                            "bbbbb",
-                            "bbbbb",
-                            "     ",
-                            "     "
-                          ],
-                          [
-                            " bbb ",
-                            " bab ",
-                            "bbabb",
-                            "bbabb",
-                            "  a  ",
-                            "  a  "
-                          ],
-                          [
-                            "  b  ",
-                            " bbb ",
-                            "bbbbb",
-                            "bbbbb",
-                            "     ",
-                            "     "
-                          ],
-                          [
-                            "     ",
-                            "     ",
-                            "bbbbb",
-                            " bbbb",
-                            "     ",
-                            "     "
-                          ]
-                        ]
-                      }
+                  "type": "bonsaitrees3:sapling/%1$s/%2$s",
+                  "version": 3,
+                  "ref": {
+                    "a": {
+                      "block": "%1$s:%2$s_log"
+                    },
+                    "b": {
+                      "block": "%1$s:%2$s_leaves"
                     }
+                  },
+                  "shape": [
+                    [
+                      "     ",
+                      "     ",
+                      "bbbb ",
+                      " bbb ",
+                      "     ",
+                      "     "
+                    ],
+                    [
+                      "  b  ",
+                      "  bb ",
+                      "bbbbb",
+                      "bbbbb",
+                      "     ",
+                      "     "
+                    ],
+                    [
+                      " bbb ",
+                      " bab ",
+                      "bbabb",
+                      "bbabb",
+                      "  a  ",
+                      "  a  "
+                    ],
+                    [
+                      "  b  ",
+                      " bbb ",
+                      "bbbbb",
+                      "bbbbb",
+                      "     ",
+                      "     "
+                    ],
+                    [
+                      "     ",
+                      "     ",
+                      "bbbbb",
+                      " bbbb",
+                      "     ",
+                      "     "
+                    ]
                   ]
                 }
                 """.formatted(modid, id).getBytes(StandardCharsets.UTF_8));
         data.put(ResourceLocation.parse("bonsaitrees3:recipes/sapling/oretrees/" + id + ".json"), """
                 {
-                  "type": "bonsaitrees3:sapling",
-                  "compatibleSoilTags": [
-                    "dirt",
-                    "grass"
-                  ],
-                  "drops": [
+                  "recipes": [
                     {
-                      "chance": 0.02,
-                      "result": {
-                        "item": "%1$s:%2$s_sapling"
-                      },
-                      "rolls": 1
-                    },
-                    {
-                      "chance": 0.75,
-                      "result": {
-                        "item": "minecraft:oak_log"
-                      },
-                      "rolls": 1
-                    },
-                    {
-                      "chance": 0.75,
-                      "result": {
-                        "item": "%1$s:%2$s_bark"
-                      },
-                      "rolls": 1
-                    },
-                    {
-                      "chance": 0.2,
-                      "result": {
-                        "item": "minecraft:stick"
-                      },
-                      "rolls": 3
-                    },
-                    {
-                      "chance": 0.2,
-                      "requiresSilkTouch": true,
-                      "result": {
-                        "item": "%1$s:%2$s_leaves"
-                      },
-                      "rolls": 2
-                    },
-                    {
-                      "chance": 0.65,
-                      "requiresBees": true,
-                      "result": {
-                        "item": "%1$s:%2$s_fruit"
-                      },
-                      "rolls": 1
+                      "conditions": [
+                        {
+                          "modid": "bonsaitrees3",
+                          "type": "forge:mod_loaded"
+                        }
+                      ],
+                      "recipe": {
+                        "compatibleSoilTags": [
+                          "dirt",
+                          "grass"
+                        ],
+                        "drops": [
+                          {
+                            "chance": 0.02,
+                            "result": {
+                              "item": "%1$s:%2$s_sapling"
+                            },
+                            "rolls": 1
+                          },
+                          {
+                            "chance": 0.75,
+                            "result": {
+                              "item": "minecraft:oak_log"
+                            },
+                            "rolls": 1
+                          },
+                          {
+                            "chance": 0.75,
+                            "result": {
+                              "item": "%1$s:%2$s_bark"
+                            },
+                            "rolls": 1
+                          },
+                          {
+                            "chance": 0.2,
+                            "result": {
+                              "item": "minecraft:stick"
+                            },
+                            "rolls": 3
+                          },
+                          {
+                            "chance": 0.2,
+                            "requiresSilkTouch": true,
+                            "result": {
+                              "item": "%1$s:%2$s_leaves"
+                            },
+                            "rolls": 2
+                          },
+                          {
+                            "chance": 0.65,
+                            "requiresBees": true,
+                            "result": {
+                              "item": "%1$s:%2$s_fruit"
+                            },
+                            "rolls": 1
+                          }
+                        ],
+                        "mod": "%1$s",
+                        "sapling": [
+                          {
+                            "item": "%1$s:%2$s_sapling"
+                          }
+                        ],
+                        "type": "bonsaitrees3:sapling"
+                      }
                     }
                   ],
-                  "mod": "%1$s",
-                  "sapling": [
-                    {
-                      "item": "%1$s:%2$s_sapling"
-                    }
-                  ]
+                  "type": "forge:conditional"
                 }
                 """.formatted(modid, id).getBytes(StandardCharsets.UTF_8));
     }

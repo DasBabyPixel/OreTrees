@@ -172,7 +172,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:libnonymous-357557:5668436")
     compileOnly fg.deobf("curse.maven:bonsai-trees-278993:5704378")
-//    implementation fg.deobf("curse.maven:bonsai-trees-278993:5704378")
+    implementation fg.deobf("curse.maven:bonsai-trees-278993:5704378")
 //    implementation fg.deobf("curse.maven:configured-457570:5101367")
     implementation fg.deobf("curse.maven:jei-integration-265917:4999754")
 }
