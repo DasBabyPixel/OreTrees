@@ -170,6 +170,8 @@ public class OreTreesResourcePack implements RepositorySource {
         data.put(location("tags/items/saplings.json"), createTags(type -> List.of(location(type.id() + "_sapling"))));
         data.put(location("tags/block/leaves.json"), createTags(type -> List.of(location(type.id() + "_leaves"))));
         data.put(location("tags/items/leaves.json"), createTags(type -> List.of(location(type.id() + "_leaves"))));
+        data.put(ResourceLocation.withDefaultNamespace("tags/blocks/mineable/pickaxe.json"), createTags(type -> List.of(location(type.id() + "_essence"))));
+        data.put(ResourceLocation.withDefaultNamespace("tags/blocks/needs_stone_tool.json"), createTags(type -> List.of(location(type.id() + "_essence"))));
     }
 
     private byte[] createTags(Function<TreeType, List<ResourceLocation>> locationFunction) {
@@ -652,6 +654,29 @@ public class OreTreesResourcePack implements RepositorySource {
                   ]
                 }
                 """.formatted(modid, id).getBytes(StandardCharsets.UTF_8));
+        data.put(location("loot_tables/blocks/" + name + ".json"), """
+                {
+                  "type": "minecraft:block",
+                  "pools": [
+                    {
+                      "bonus_rolls": 0.0,
+                      "conditions": [
+                        {
+                          "condition": "minecraft:survives_explosion"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "type": "minecraft:item",
+                          "name": "%1$s:%2$s_essence"
+                        }
+                      ],
+                      "rolls": 1.0
+                    }
+                  ],
+                  "random_sequence": "%1$s:blocks/%2$s_essence"
+                }
+                """.formatted(modid, id).getBytes(StandardCharsets.UTF_8));
     }
 
     private void addLeaves(Map<ResourceLocation, byte[]> assets, Map<ResourceLocation, byte[]> data, TreeType treeType) {
@@ -910,6 +935,29 @@ public class OreTreesResourcePack implements RepositorySource {
                 }
                 """.formatted(textureLocation).getBytes(StandardCharsets.UTF_8));
 
+        data.put(location("loot_tables/blocks/" + name + ".json"), """
+                {
+                  "type": "minecraft:block",
+                  "pools": [
+                    {
+                      "bonus_rolls": 0.0,
+                      "conditions": [
+                        {
+                          "condition": "minecraft:survives_explosion"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "type": "minecraft:item",
+                          "name": "%1$s:%2$s_sapling"
+                        }
+                      ],
+                      "rolls": 1.0
+                    }
+                  ],
+                  "random_sequence": "%1$s:blocks/%2$s_sapling"
+                }
+                """.formatted(modid, id).getBytes(StandardCharsets.UTF_8));
         data.put(location("worldgen/configured_feature/" + id + ".json"), """
                 {
                   "type": "minecraft:tree",
